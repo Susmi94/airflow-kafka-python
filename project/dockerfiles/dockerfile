@@ -1,0 +1,28 @@
+FROM puckel/docker-airflow:1.10.9
+#FROM confluentinc/cp-kafka-connect-base
+# Start with a base Spark image
+#FROM bitnami/spark:latest
+#
+## Copy JAR files into a directory in the Spark container
+#COPY "C:\Users\Nikhil\Downloads\spark-sql-kafka-0-10_2.12-3.5.1.jar"  /opt/bitnami/spark/jars/
+
+
+RUN pip install apache-airflow[celery,redis]
+#RUN pip install upgrade pip
+RUN pip install kafka-python
+#RUN confluent-hub install
+RUN pip install spark pyspark
+RUN pip install cassandra-driver
+
+
+#FROM bitnami/spark:latest
+#
+## Install Python
+#USER root
+#RUN apt-get update && apt-get install -y python3 python3-pip
+#
+## Ensure Spark binaries are in the PATH
+#ENV PATH=/opt/bitnami/spark/bin:$PATH
+#
+## Keep the container running
+#CMD ["bash", "-c", "while true; do sleep 1000; done"]
